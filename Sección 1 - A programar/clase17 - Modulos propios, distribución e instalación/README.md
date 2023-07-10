@@ -10,5 +10,8 @@ Nota: Este archivo no tiene contenido en la mayoria de los casos.
 * Sexto: Para hacer uso ahora del paquete de distribución nos dirigimos desde la terminal a la carpeta "dist" y encontraremos el archivo compromido en
   formato ".tar.gz". Posteriormente procedemos a instalar con el comando "pip install nombre-del-paquete" (en este caso el nombre del paquete generado es
   paquete-0.1.tar.gz) Nota: para realizar la desinstalación se ingresa en la terminal "pip uninstall nombre" (esta vez sin especificar formato)
-* Septimo: Para comprobar el uso del paquete distribuible con correcto funcionamiento se hace uso del archivo que se encuentra en la raiz de la carpeta "Sección 1 - A programar" llamado: 
-  "clase17_ejemplo-paquete_distruible"
+* Septimo: Para comprobar el uso del paquete distribuible con correcto funcionamiento se hace uso del archivo que se encuentra en la raiz de la carpeta "Sección 1 - A programar" llamado: "clase17_ejemplo-paquete_distribuible"
+
+* Para ver los paquetes instalados usar el comando "pip list" y para ver mas información de un paquete en especifico usar el comando "pip show nombre-del-paquete"
+
+Nota: El archivo de "clase17_paquetes_import", en este solo se estan realizando las importaciones de una forma directa, este servio de ejemplo antes de saber usar la distribución y sobre todo el cuando hacer uso de este.
