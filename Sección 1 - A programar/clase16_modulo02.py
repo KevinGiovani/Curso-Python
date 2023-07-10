@@ -1,4 +1,5 @@
 from random import randint as azar # azar es el alias
+
 # from random import * - (Importamos todas las funciones de random)
 
 continua = "S"
