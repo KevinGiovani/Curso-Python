@@ -1,8 +1,3 @@
-Antes de proceder a crear la distribución necesaria para este ejemplo de clase, es necesario crear un entorno virtual, de modo que sirva para aislar las instalaciones de las dependencias del proyecto y no tener que hacerlo de forma global en todo el sistema. Primero desde la raiz de esta carpeta (clase17 - Modulos propios, distribución e instalación), se ingresa en la terminal el siguiente comando: "py -m venv INSERTAR-NOMBRE-ENTORNO-VIRTUAL" (en este caso se uso "venv" y fue agregado al .gitignore). A continuación se puede observar que se creo una carpeta con el nombre ingresado en el comando y con varios archivos.
-
-Para activar el entorno virtual ingresa el comando "NOMBRE-ENTORNO-VIRTUAL\Scripts\activate" o bien dirigirse a la carpeta creada e ingresar a la subcarpeta "Scripts" y desde la terminal escribir "activate". Para desactivar el entorno virtual bastara con ingresar el comando: "deactivate".
-Nota: En caso de que ya no se desee utilizar mas el entorno virtual creado, simplemente para eliminarlo se escoge dicha carpeta.
-
 Para hacer uso de la distribución de paquetes de forma correcta:
 * Primero: Crear un paquete (en este ejemplo lleva como tal el mismo nombre "paquete" la carpeta usada)
 * Segundo: Dentro de paquete crear el archivo "__init__.py" (Este archivo sirve para que Python lo interprete como modulo (paquete) que contiene otros modulos y asi importarlos)
