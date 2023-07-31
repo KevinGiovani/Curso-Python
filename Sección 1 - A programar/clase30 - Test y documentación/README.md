@@ -21,4 +21,5 @@ se obtuvo.
 
 Mas información:
   - Pruebas: https://realpython.com/python-doctest/
+  - Documentación: https://codigofacilito.com/articulos/documentar_modulos_python
   - Documentación y pruebas: https://pywombat.com/articles/docstring-python
