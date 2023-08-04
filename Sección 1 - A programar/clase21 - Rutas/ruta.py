@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 
 #Directorio actual
 directorio_actual = os.path.dirname(__file__)
