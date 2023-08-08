@@ -1,9 +1,10 @@
 import time,random, os
+
 from func_terminal import opcion_invalida,clean
 
 def ganador(puntos):
     os.system("cls")
-    print("RONDAS FINALIZADAS")
+    print("FIN DEL JUEGO")
     if puntos[0] > puntos[1]:
         print("EL GANADOR ES EL JUGADOR", end = " ")
     elif puntos[0] < puntos[1]:
@@ -13,15 +14,11 @@ def ganador(puntos):
     print(f"({puntos[0]} - {puntos[1]})")
 
 def duelo(jugador, npc, ronda):
-    #time.sleep(1)
     print("\n","PIEDRA!".center(40))
-    #time.sleep(1)
     print("\n","PAPEL!!".center(40))
-    #time.sleep(1)
     print("\n","TIJERA!!!".center(42))
-    #time.sleep(1)
     if jugador==npc:
-        print("\nHa surgido un empate!")
+        print(f"\nHa surgido un empate! ({jugador} - {npc})")
         ganador = None
     elif (jugador=="PAPEL" and npc=="PIEDRA") or (jugador=="TIJERA" and npc=="PAPEL") or (jugador=="PIEDRA" and npc=="TIJERA"):
         print(f"\nEl jugador ha ganado la ronda #{ronda}")
@@ -37,11 +34,22 @@ def duelo(jugador, npc, ronda):
 def nivel_dificil(jugada):
     pass
 
-def nivel_normal(jugada):
-    pass
+    
+def nivel_normal(jugada, memoria_npc):
+    jugada.extend(memoria_npc) # Si una persona gana, suele repetir el movimiento.
+    return random.choice(jugada)
 
 def nivel_facil(jugada):
     return random.choice(jugada)
+
+def pensamiento_maquina(ganador_r):
+    match ganador_r:
+        case 'PIEDRA':
+            return 'PAPEL'
+        case 'PAPEL':
+            return 'TIJERA'
+        case 'TIJERA':
+            return 'PIEDRA'
 
 def eleccion_jugador(jugada, ronda, puntos):
     os.system("cls")
@@ -57,32 +65,33 @@ def eleccion_jugador(jugada, ronda, puntos):
     
 def rondas(nivel_npc):
     puntos = [0, 0] # [jugador, npc]
-    jugada = ("PIEDRA", "PAPEL", "TIJERA")
+    jugada = ["PIEDRA", "PAPEL", "TIJERA"]
     ronda = 1
+    memoria_npc = []
     while ronda <= 3:
         jugador = eleccion_jugador(jugada,ronda, puntos)
         match nivel_npc:
             case "FACIL":
                 npc = nivel_facil(jugada)
             case "NORMAL":
-                npc = nivel_normal(jugada)
+                npc = nivel_normal(jugada, memoria_npc)
             case "DIFICIL":
                 npc = nivel_dificil(jugada)
-        
         time.sleep(1)
         print("\nLa maquina ya decidio su jugada!...")
         time.sleep(1)
         input("\nPresione una tecla para comenzar el duelo! ")
         resultado = duelo(jugador, npc, ronda)
         if resultado:
+            memoria_npc.append(pensamiento_maquina(jugador))
             puntos[0] += 1
         elif resultado is False:
+            memoria_npc.append(pensamiento_maquina(npc))
             puntos[1] += 1
         ronda += 1
     ganador(puntos)
     clean()
-
-    
+   
 def dificultad():
     opciones = ("FACIL", "NORMAL", "DIFICIL","R")
     while True:
@@ -90,10 +99,13 @@ def dificultad():
         nivel_npc = input("- FACIL\n- NORMAL\n- DIFICIL\nSi desea regresar al menu anterior ingrese 'R'\nOpción: ")
         nivel_npc = nivel_npc.upper()
         if nivel_npc in opciones:
-            if(nivel_npc!="R"):
+            if(nivel_npc=="DIFICIL"):
+                print("\nPROXIMAMENTE...\n")
+                clean()
+            elif(nivel_npc!="R"):
                 rondas(nivel_npc)
             elif(nivel_npc=="R"):
                 os.system("cls")
                 break
-            else:
-                opcion_invalida()
+        else:
+            opcion_invalida()
